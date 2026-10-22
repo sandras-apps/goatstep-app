@@ -1,6 +1,6 @@
 <!-- Decides which screen to show:
-     checking login → loading | reset-password link → new password | logged out → login screens
-     | old email link while logged in → link expired | first visit → welcome
+     checking login → loading | reset-password link → new password | old email link → link expired
+     | logged out → login screens | first visit → welcome
      | otherwise → app screens with the bottom menu -->
 <script>
   import { onMount } from 'svelte';
@@ -39,12 +39,12 @@
   </div>
 {:else if $recoveryMode}
   <ResetPassword />
+{:else if $linkResult === 'expired'}
+  <LinkExpired />
 {:else if !$session}
   <LoggedOutScreen />
 {:else if $profile === null}
   <main class="screen"><p class="error" role="alert">{$t('setup.profileMissing')}</p></main>
-{:else if $linkResult === 'expired'}
-  <LinkExpired />
 {:else if !$profile.onboarding_done}
   <Welcome />
 {:else}

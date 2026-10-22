@@ -50,7 +50,8 @@
     "expired": "That link has expired or was already used. No problem: you can ask for a new one.",
     "expiredTitle": "This link can't be used",
     "newLink": "Ask for a new link",
-    "continue": "Continue to Goatstep"
+    "backToAccount": "Back to my account",
+    "goToLogin": "Go to log in"
   },
   "forgot": {
     "title": "New password",

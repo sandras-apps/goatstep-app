@@ -1,8 +1,8 @@
-<!-- Shown when someone already logged in on this browser opens an old or already-used email link:
+<!-- Shown when someone opens an old or already-used email link, logged in or not:
      we say so instead of silently letting them into the app. -->
 <script>
   import Rocco from '../components/Rocco.svelte';
-  import { linkResult } from '../lib/auth.js';
+  import { linkResult, session } from '../lib/auth.js';
   import { go } from '../lib/router.js';
   import { t } from '../i18n/index.js';
 
@@ -11,9 +11,9 @@
     go('/forgot');
   }
 
-  function continueToApp() {
+  function leave() {
     linkResult.set(null);
-    go('/today');
+    go($session ? '/today' : '/login');
   }
 </script>
 
@@ -23,7 +23,9 @@
   <p>{$t('links.expired')}</p>
   <div class="actions">
     <button class="btn btn-primary" type="button" onclick={askForNewLink}>{$t('links.newLink')}</button>
-    <button class="btn btn-secondary" type="button" onclick={continueToApp}>{$t('links.continue')}</button>
+    <button class="btn btn-secondary" type="button" onclick={leave}>
+      {$session ? $t('links.backToAccount') : $t('links.goToLogin')}
+    </button>
   </div>
 </main>
 

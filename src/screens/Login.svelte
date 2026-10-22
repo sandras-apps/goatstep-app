@@ -35,8 +35,6 @@
 <AuthLayout image="promo-focus-today" title={$t('login.title')} subtitle={$t('login.subtitle')}>
   {#if linkNotice === 'confirmed'}
     <p class="notice" role="status">{$t('links.confirmed')}</p>
-  {:else if linkNotice === 'expired'}
-    <p class="notice" role="status">{$t('links.expired')}</p>
   {/if}
 
   <form onsubmit={submit}>

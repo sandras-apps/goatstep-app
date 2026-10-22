@@ -50,7 +50,8 @@
     "expired": "Il link è scaduto o è già stato usato. Nessun problema: puoi chiederne uno nuovo.",
     "expiredTitle": "Questo link non si può usare",
     "newLink": "Chiedi un nuovo link",
-    "continue": "Continua su Goatstep"
+    "backToAccount": "Torna al mio account",
+    "goToLogin": "Vai al login"
   },
   "forgot": {
     "title": "Nuova password",
