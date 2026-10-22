@@ -6,12 +6,20 @@
 import { writable, get } from 'svelte/store';
 import { supabase, isConfigured } from './supabase.js';
 import { appUrl, TERMS_VERSION } from './config.js';
+import { go } from './router.js';
 import { locale } from '../i18n/index.js';
 
 export const session = writable(undefined);
 export const profile = writable(undefined);
 export const recoveryMode = writable(false); // true after opening a "reset password" link
 export const linkResult = writable(null); // 'confirmed' | 'expired', after opening an email link
+
+// Reads the email-link result and clears it, so its message is shown only once.
+export function takeLinkResult() {
+  const result = get(linkResult);
+  linkResult.set(null);
+  return result;
+}
 
 export async function initAuth() {
   if (!isConfigured) {
@@ -30,24 +38,48 @@ export async function initAuth() {
   });
 }
 
-// Email links look like  …/?token_hash=abc&type=email  (or type=recovery).
-// See supabase/email-templates/. This works even if the link is opened on another device.
+// Email links (confirm sign-up, reset password) bring people back in one of two shapes:
+//  - Supabase's default emails: …/#access_token=…&refresh_token=…&type=signup (or type=recovery),
+//    or …/#error=…&error_code=otp_expired when the link is too old or already used
+//  - our own templates (supabase/email-templates/, once custom SMTP is set up):
+//    …/?token_hash=…&type=email (or type=recovery)
+// Both work even if the link is opened on another device than the one used to sign up.
 async function handleEmailLink() {
-  const params = new URLSearchParams(window.location.search);
-  const tokenHash = params.get('token_hash');
-  const type = params.get('type');
-  if (!tokenHash || !type) return;
+  const query = new URLSearchParams(window.location.search);
+  const hash = window.location.hash.slice(1);
+  // "#/today" is a normal page address; anything else after "#" comes from Supabase.
+  const fragment = new URLSearchParams(hash.startsWith('/') ? '' : hash);
 
-  // Remove the token from the address bar straight away.
-  window.history.replaceState(null, '', window.location.pathname + window.location.hash);
+  const tokenHash = query.get('token_hash');
+  const accessToken = fragment.get('access_token');
+  const linkError = query.get('error') ?? fragment.get('error');
+  if (!tokenHash && !accessToken && !linkError) return;
 
-  const { error } = await supabase.auth.verifyOtp({ token_hash: tokenHash, type });
+  const type = query.get('type') ?? fragment.get('type');
+
+  // Remove the tokens from the address bar (and browser history) straight away.
+  window.history.replaceState(null, '', window.location.pathname);
+
+  let error = linkError;
+  if (tokenHash) {
+    ({ error } = await supabase.auth.verifyOtp({ token_hash: tokenHash, type }));
+  } else if (accessToken) {
+    ({ error } = await supabase.auth.setSession({
+      access_token: accessToken,
+      refresh_token: fragment.get('refresh_token')
+    }));
+  }
+
   if (error) {
+    // If someone is already logged in on this browser (e.g. in another tab), App.svelte
+    // shows this message on its own screen instead of letting them straight in.
     linkResult.set('expired');
+    go('/login');
   } else if (type === 'recovery') {
     recoveryMode.set(true);
   } else {
     linkResult.set('confirmed');
+    go('/today');
   }
 }
 
@@ -110,10 +142,18 @@ export function sendPasswordReset(email) {
 
 export async function setNewPassword(password) {
   const result = await supabase.auth.updateUser({ password });
-  if (!result.error) recoveryMode.set(false);
+  if (result.error) return result;
+
+  // Log out every other device and browser that was using the old password.
+  // (They are fully out within an hour at most, when their current access expires.)
+  const { error } = await supabase.auth.signOut({ scope: 'others' });
+  if (error) console.error('Could not sign out other sessions', error);
+
+  recoveryMode.set(false);
   return result;
 }
 
 export function logOut() {
+  linkResult.set(null);
   return supabase.auth.signOut();
 }

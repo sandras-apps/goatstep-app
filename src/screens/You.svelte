@@ -84,6 +84,7 @@
     <h2>{$t('you.legal')}</h2>
     <p><a href="#/privacy">{$t('legal.privacy')}</a></p>
     <p><a href="#/terms">{$t('legal.terms')}</a></p>
+    <p><a href="#/cookies">{$t('legal.cookies')}</a></p>
   </section>
 
   <section class="card">

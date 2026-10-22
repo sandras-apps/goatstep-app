@@ -1,9 +1,10 @@
-<!-- Privacy Policy and Terms. The real texts (EN + IT) are written in the legal step. -->
+<!-- Privacy Policy, Terms and Cookie Policy. The real texts (EN + IT) are written in the legal step. -->
 <script>
   import { route } from '../lib/router.js';
   import { t } from '../i18n/index.js';
 
-  let page = $derived($route === '/terms' ? 'terms' : 'privacy');
+  const pages = { '/privacy': 'privacy', '/terms': 'terms', '/cookies': 'cookies' };
+  let page = $derived(pages[$route] ?? 'privacy');
 </script>
 
 <div class="screen">

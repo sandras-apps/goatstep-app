@@ -12,7 +12,8 @@
   .rocco {
     display: block;
     height: auto;
-    margin: 0 auto;
+    /* Space between Rocco and the text below, the same on every screen. */
+    margin: 0 auto 24px;
     /* Softens the square edge until transparent images arrive. */
     border-radius: 24px;
   }

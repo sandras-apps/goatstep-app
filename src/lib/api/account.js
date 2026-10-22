@@ -2,7 +2,7 @@
 
 import { get } from 'svelte/store';
 import { supabase } from '../supabase.js';
-import { session } from '../auth.js';
+import { session, linkResult } from '../auth.js';
 
 // Every table holding the user's data. Each build step adds its tables here
 // (categories, habits, habit_logs, items, checkins…) so the export is always complete.
@@ -37,6 +37,7 @@ export async function exportMyData() {
 export async function deleteMyAccount() {
   const { error } = await supabase.functions.invoke('delete-account', { method: 'POST' });
   if (error) throw error;
-  // The account no longer exists: just forget the session on this device.
+  // The account no longer exists: just forget the session and any old messages on this device.
+  linkResult.set(null);
   await supabase.auth.signOut({ scope: 'local' });
 }

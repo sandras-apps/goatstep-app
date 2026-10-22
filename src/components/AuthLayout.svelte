@@ -28,10 +28,6 @@
     padding-bottom: 40px;
   }
 
-  .auth :global(.rocco) {
-    margin-bottom: 16px;
-  }
-
   .subtitle {
     color: var(--color-ink-soft);
   }

@@ -46,8 +46,11 @@
     "notMet": "(non ancora)"
   },
   "links": {
-    "confirmed": "Email confermata! Ora puoi accedere.",
-    "expired": "Il link è scaduto o è già stato usato. Nessun problema: puoi chiederne uno nuovo."
+    "confirmed": "Email confermata! Che bello averti qui.",
+    "expired": "Il link è scaduto o è già stato usato. Nessun problema: puoi chiederne uno nuovo.",
+    "expiredTitle": "Questo link non si può usare",
+    "newLink": "Chiedi un nuovo link",
+    "continue": "Continua su Goatstep"
   },
   "forgot": {
     "title": "Nuova password",
@@ -103,7 +106,7 @@
     "logout": "Esci",
     "deleteTitle": "Elimina il mio account",
     "deleteText": "Elimina il tuo account, le tue abitudini, il tuo storico e tutti i tuoi file. Non si può annullare.",
-    "deleteStart": "Elimina il mio account…",
+    "deleteStart": "Elimina il mio account",
     "deleteCheckbox": "Ho capito che verrà eliminato tutto, per sempre.",
     "deleteConfirm": "Elimina tutto",
     "deleting": "Eliminazione in corso…",
@@ -112,10 +115,11 @@
   "legal": {
     "privacy": "Privacy Policy",
     "terms": "Termini di servizio",
+    "cookies": "Cookie Policy",
     "draft": "Questa pagina è in preparazione e sarà pronta prima che Goatstep sia disponibile al pubblico."
   },
   "errors": {
-    "invalidCredentials": "Email o password non corrispondono. Riprova con calma.",
+    "invalidCredentials": "Email o password non corrispondono. Riprova.",
     "emailNotConfirmed": "La tua email non è ancora confermata. Cerca il nostro link nella posta.",
     "tooManyAttempts": "Troppi tentativi in poco tempo. Fai un bel respiro e riprova tra qualche minuto.",
     "weakPassword": "Ci sei quasi! Alla password manca ancora qualcosa: guarda l'elenco, ogni regola riceve una spunta quando è a posto.",

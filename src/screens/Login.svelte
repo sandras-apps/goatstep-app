@@ -1,6 +1,6 @@
 <script>
   import AuthLayout from '../components/AuthLayout.svelte';
-  import { logIn, resendConfirmation, linkResult } from '../lib/auth.js';
+  import { logIn, resendConfirmation, takeLinkResult } from '../lib/auth.js';
   import { isConfigured } from '../lib/supabase.js';
   import { authErrorKey } from '../lib/errors.js';
   import { go } from '../lib/router.js';
@@ -11,6 +11,9 @@
   let busy = $state(false);
   let errorKey = $state(null);
   let resent = $state(false);
+
+  // Message from an email link just opened (shown once, then forgotten).
+  const linkNotice = takeLinkResult();
 
   async function submit(event) {
     event.preventDefault();
@@ -30,9 +33,9 @@
 </script>
 
 <AuthLayout image="promo-focus-today" title={$t('login.title')} subtitle={$t('login.subtitle')}>
-  {#if $linkResult === 'confirmed'}
+  {#if linkNotice === 'confirmed'}
     <p class="notice" role="status">{$t('links.confirmed')}</p>
-  {:else if $linkResult === 'expired'}
+  {:else if linkNotice === 'expired'}
     <p class="notice" role="status">{$t('links.expired')}</p>
   {/if}
 

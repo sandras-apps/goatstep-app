@@ -83,9 +83,11 @@ The app shows and checks the same rules before sending the form (`PASSWORD_RULES
 
 **Authentication → Rate Limits**: leave the defaults. They already slow down repeated login attempts.
 
-### 5. Email templates
+### 5. Email templates (later, before launch)
 
-**Authentication → Emails → Templates**. For each template: open it, set the **Subject**, replace the whole **Message body** with the whole file, click **Save changes**.
+⏭️ **Skip this for now.** Supabase only lets you edit templates once a custom email sender (SMTP) is set up. Until then it sends its default English emails, and the app understands their links too. See the pre-launch checklist in [docs/architecture.md](docs/architecture.md#6-before-the-public-launch-checklist).
+
+When custom SMTP is ready: **Authentication → Emails → Templates**. For each template: open it, set the **Subject**, replace the whole **Message body** with the whole file, click **Save changes**.
 
 | Template | Subject | Message body |
 | --- | --- | --- |
@@ -108,8 +110,9 @@ The function checks by itself who is calling, so it is safe whether **Verify JWT
 Run `npm run dev` and open http://localhost:5173. Use **the email of your Supabase account**: until we set up our own email sender, Supabase's built-in one only delivers to the project team, a few emails per hour.
 
 - [ ] **Sign up**: the password rules are visible before typing and get a tick one by one; *Create my account* stays disabled until the Privacy/Terms box is ticked; then "Check your inbox".
-- [ ] **Confirm email**: the email arrives in your language; the link brings you back to the app with "Email confirmed!".
-- [ ] **Log in**: Rocco's welcome screen → *Let's go* → Today, with the bottom menu.
+- [ ] **Confirm email**: the email arrives (Supabase's default English text for now); the link brings you back to the app, already logged in, on Rocco's welcome screen → *Let's go* → Today, with the bottom menu.
+- [ ] **Old link**: click the same confirmation link again → the login screen says the link has expired or was already used.
+- [ ] **Log in**: log out, then log in with your email and password → Today.
 - [ ] **Supabase check**: **Table Editor → profiles** has one row with `terms_accepted_at` filled in.
 - [ ] **Language**: tab *You* → switch to Italiano → the app changes language; reload: it stays.
 - [ ] **Export**: *Export my data* downloads a `goatstep-export-….json` file with your profile.

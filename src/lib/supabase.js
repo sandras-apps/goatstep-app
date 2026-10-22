@@ -14,7 +14,8 @@ export const supabase = isConfigured
       auth: {
         persistSession: true,
         autoRefreshToken: true,
-        // Email links are handled by lib/auth.js (token_hash), not read from the URL here.
+        // Email links are handled by lib/auth.js, because the "#" part of the address
+        // is also used by our router (#/today) and the two must not get mixed up.
         detectSessionInUrl: false
       }
     })

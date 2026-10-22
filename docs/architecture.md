@@ -155,8 +155,20 @@ Private bucket `materials`. Path: `{user_id}/{habit_id}/{random-id}-{file name}`
 
 ## 6. Before the public launch (checklist)
 
-- [ ] **Backups**: the Supabase free plan has none. Decide: paid plan, or a scheduled export.
+### Privacy and legal
+- [ ] **Privacy Policy** (EN + IT), final version, reviewed by a professional or a service like iubenda.
+- [ ] **Terms of Service** (EN + IT), final version, reviewed the same way.
+- [ ] **Cookie Policy** (EN + IT), final version, reviewed the same way.
+- [ ] **Cookie banner**: informative only, because the app uses only technical cookies/storage (login session, language). No marketing consent needed as long as there are no trackers or third-party analytics.
+- [ ] Bump `TERMS_VERSION` in `src/lib/config.js` when the final texts replace the drafts.
+- [ ] *(Later)* **Data export in a human-readable format** too (e.g. a simple HTML or PDF page), next to the current JSON file.
+
+### Security and operations
+- [ ] **Database backups**: the Supabase free plan has none. Decide: paid plan, or a scheduled export.
 - [ ] Free projects are **paused after ~1 week without activity**.
-- [ ] **Custom SMTP** for auth emails (the built-in sender only reaches the project team and a few emails per hour).
-- [ ] Legal drafts reviewed by a professional or a service like iubenda.
+- [ ] **Custom SMTP** for auth emails: the built-in sender only reaches the project team, a few emails per hour, and its templates can't be edited.
+  1. Create a free account with an email provider such as **Resend** or **Brevo** and verify a sending domain.
+  2. Supabase → Authentication → Emails → **SMTP Settings**: enter the provider's SMTP details.
+  3. Paste our EN/IT templates from `supabase/email-templates/` (subjects in README §5).
+  4. Test sign-up and reset password again. The app handles both link styles: Supabase's default `{{ .ConfirmationURL }}` and our `token_hash` links.
 - [ ] Supabase Auth: Site URL set to the GitHub Pages address.

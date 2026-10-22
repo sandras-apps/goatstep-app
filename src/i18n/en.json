@@ -46,8 +46,11 @@
     "notMet": "(not yet)"
   },
   "links": {
-    "confirmed": "Email confirmed! Welcome aboard. You can log in now.",
-    "expired": "That link has expired or was already used. No problem: you can ask for a new one."
+    "confirmed": "Email confirmed! Welcome aboard.",
+    "expired": "That link has expired or was already used. No problem: you can ask for a new one.",
+    "expiredTitle": "This link can't be used",
+    "newLink": "Ask for a new link",
+    "continue": "Continue to Goatstep"
   },
   "forgot": {
     "title": "New password",
@@ -103,7 +106,7 @@
     "logout": "Log out",
     "deleteTitle": "Delete my account",
     "deleteText": "This deletes your account, your habits, your history and all your files. It can't be undone.",
-    "deleteStart": "Delete my account…",
+    "deleteStart": "Delete my account",
     "deleteCheckbox": "I understand that everything will be deleted for good.",
     "deleteConfirm": "Delete everything",
     "deleting": "Deleting…",
@@ -112,10 +115,11 @@
   "legal": {
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
+    "cookies": "Cookie Policy",
     "draft": "This page is being written and will be ready before Goatstep is publicly available."
   },
   "errors": {
-    "invalidCredentials": "Email or password don't match. Try again, gently.",
+    "invalidCredentials": "Email or password don't match. Try again.",
     "emailNotConfirmed": "Your email isn't confirmed yet. Check your inbox for our link.",
     "tooManyAttempts": "Too many attempts in a short time. Take a breath and try again in a few minutes.",
     "weakPassword": "Almost there! Your password still needs a few things: check the list, each rule gets a tick when it's done.",

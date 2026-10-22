@@ -1,12 +1,15 @@
 <!-- First screen after the first login. The onboarding questions are added in step 2. -->
 <script>
   import Rocco from '../components/Rocco.svelte';
-  import { updateProfile } from '../lib/auth.js';
+  import { updateProfile, takeLinkResult } from '../lib/auth.js';
   import { go } from '../lib/router.js';
   import { t } from '../i18n/index.js';
 
   let busy = $state(false);
   let failed = $state(false);
+
+  // True only right after clicking the confirmation link (shown once, then forgotten).
+  const justConfirmed = takeLinkResult() === 'confirmed';
 
   async function start() {
     busy = true;
@@ -21,6 +24,9 @@
 </script>
 
 <main class="screen center welcome">
+  {#if justConfirmed}
+    <p class="notice" role="status">{$t('links.confirmed')}</p>
+  {/if}
   <Rocco name="promo-keep-going" width={260} />
   <h1>{$t('welcome.title')}</h1>
   <p>{$t('welcome.text')}</p>
@@ -34,10 +40,6 @@
 <style>
   .welcome {
     padding-bottom: 40px;
-  }
-
-  .welcome :global(.rocco) {
-    margin-bottom: 20px;
   }
 
   .btn {

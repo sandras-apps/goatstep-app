@@ -1,10 +1,11 @@
 <!-- Decides which screen to show:
      checking login → loading | reset-password link → new password | logged out → login screens
-     | first visit → welcome | otherwise → app screens with the bottom menu -->
+     | old email link while logged in → link expired | first visit → welcome
+     | otherwise → app screens with the bottom menu -->
 <script>
   import { onMount } from 'svelte';
   import { route } from './lib/router.js';
-  import { session, profile, recoveryMode, initAuth } from './lib/auth.js';
+  import { session, profile, recoveryMode, linkResult, initAuth } from './lib/auth.js';
   import { t } from './i18n/index.js';
 
   import BottomNav from './components/BottomNav.svelte';
@@ -13,6 +14,7 @@
   import Signup from './screens/Signup.svelte';
   import ForgotPassword from './screens/ForgotPassword.svelte';
   import ResetPassword from './screens/ResetPassword.svelte';
+  import LinkExpired from './screens/LinkExpired.svelte';
   import Welcome from './screens/Welcome.svelte';
   import Today from './screens/Today.svelte';
   import Habits from './screens/Habits.svelte';
@@ -20,8 +22,9 @@
   import You from './screens/You.svelte';
   import Legal from './screens/Legal.svelte';
 
-  const loggedOutScreens = { '/login': Login, '/signup': Signup, '/forgot': ForgotPassword, '/privacy': Legal, '/terms': Legal };
-  const appScreens = { '/today': Today, '/habits': Habits, '/dreams': Dreams, '/you': You, '/privacy': Legal, '/terms': Legal };
+  const legalScreens = { '/privacy': Legal, '/terms': Legal, '/cookies': Legal };
+  const loggedOutScreens = { '/login': Login, '/signup': Signup, '/forgot': ForgotPassword, ...legalScreens };
+  const appScreens = { '/today': Today, '/habits': Habits, '/dreams': Dreams, '/you': You, '/forgot': ForgotPassword, ...legalScreens };
 
   let LoggedOutScreen = $derived(loggedOutScreens[$route] ?? Login);
   let AppScreen = $derived(appScreens[$route] ?? Today);
@@ -40,6 +43,8 @@
   <LoggedOutScreen />
 {:else if $profile === null}
   <main class="screen"><p class="error" role="alert">{$t('setup.profileMissing')}</p></main>
+{:else if $linkResult === 'expired'}
+  <LinkExpired />
 {:else if !$profile.onboarding_done}
   <Welcome />
 {:else}
