@@ -6,7 +6,7 @@ import { session, linkResult } from '../auth.js';
 
 // Every table holding the user's data. Each build step adds its tables here
 // (categories, habits, habit_logs, items, checkins…) so the export is always complete.
-const EXPORT_TABLES = ['profiles'];
+const EXPORT_TABLES = ['profiles', 'categories', 'habits'];
 
 // Builds a JSON file with everything we store about the user and downloads it.
 // Row Level Security means each query only returns the user's own rows.

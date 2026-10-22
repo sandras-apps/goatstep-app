@@ -3,7 +3,9 @@
     "back": "Back",
     "loading": "Loading…",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "save": "Save",
+    "cancel": "Cancel"
   },
   "setup": {
     "notConfigured": "Supabase isn't connected yet, so you can look around but not log in. See README.md, step \"Connect the app\".",
@@ -89,7 +91,15 @@
   },
   "habits": {
     "title": "Habits",
-    "placeholder": "This is where your goals and habits will grow. Coming in the next step."
+    "empty": "This is where your goals and habits will grow. Start with a goal: something you care about.",
+    "recommendation": "Start with up to {count} new habits. Few at a time actually stick.",
+    "newGoal": "New goal",
+    "editGoal": "Edit",
+    "addHabit": "Add a habit",
+    "paused": "Paused ({count})",
+    "pausedHint": "Paused habits rest here, with all their history and materials. They'll be waiting for you.",
+    "resume": "Resume",
+    "other": "Other habits"
   },
   "dreams": {
     "title": "Dreams",
@@ -131,5 +141,148 @@
     "generic": "Something went wrong on our side. Please try again in a moment.",
     "exportFailed": "We couldn't prepare your file. Please try again in a moment.",
     "deleteFailed": "We couldn't delete your account. Nothing was lost: please try again in a moment."
+  },
+  "habitRow": {
+    "minutes": "{count} min",
+    "mine": "mine",
+    "bonus": "bonus"
+  },
+  "heavy": {
+    "days": "Some days look full: {groups}.",
+    "week": "Your flexible habits add up to about {hours} hours a week.",
+    "suggestion": "Which ones matter most? Mark them as essential, the rest can be bonus and wait without guilt.",
+    "close": "Got it",
+    "everyDay": "Every day looks full ({minutes} min).",
+    "everyDayGroups": "Every day looks full: {groups}.",
+    "range": "{from} to {to}"
+  },
+  "essentials": {
+    "title": "That's a lot of new things",
+    "text": "That's a lot of new things at once. Which ones matter most every day? Mark them as essential, the rest can wait without guilt.",
+    "done": "Done"
+  },
+  "priority": {
+    "essential": "Essential",
+    "bonus": "Bonus",
+    "essentialHint": "Every day it is planned, shown first.",
+    "bonusHint": "Fine to skip at the beginning. It'll wait for you."
+  },
+  "kind": {
+    "in_progress": "New habit",
+    "already_mine": "Already mine",
+    "in_progressHint": "Something you're building now.",
+    "already_mineHint": "Something you already do and just want to keep an eye on."
+  },
+  "frequency": {
+    "everyDay": "Every day",
+    "workdays": "Monday to Friday",
+    "oncePerWeek": "Once a week",
+    "timesPerWeek": "{count} times a week",
+    "rangePerWeek": "{min}–{max} times a week",
+    "daysOption": "Specific days",
+    "weeklyOption": "Times a week",
+    "weeklyHint": "Any days you like, e.g. \"train 3–5 times a week\".",
+    "from": "From",
+    "to": "to",
+    "timesAWeek": "times a week",
+    "rangeHint": "Choose the same number twice for an exact target, or a range to keep it flexible.",
+    "daysHint": "On the weekdays you choose."
+  },
+  "habitEditor": {
+    "newTitle": "New habit",
+    "editTitle": "Edit habit",
+    "missing": "We can't find this habit. It may have been deleted.",
+    "pausedNotice": "This habit is paused: it rests, with all its history kept.",
+    "name": "Name",
+    "namePlaceholder": "e.g. Go for a run",
+    "goal": "Goal",
+    "kind": "Type",
+    "priority": "Priority",
+    "howOften": "How often",
+    "whichDays": "Which days",
+    "minutes": "Minutes (optional)",
+    "minutesHint": "Roughly how long it takes. It helps Rocco notice when a day gets too full.",
+    "why": "Your why (optional)",
+    "whyPlaceholder": "Why does this matter to you?",
+    "minimal": "Minimal version (optional)",
+    "minimalPlaceholder": "e.g. 2 pages instead of 15",
+    "minimalHint": "The small version for hard days. It still counts.",
+    "resume": "Resume this habit",
+    "pause": "Pause this habit",
+    "pauseHint": "It disappears from Today but keeps all its history. Resume it whenever you like.",
+    "graduate": "It's part of me now",
+    "graduateHint": "Moves it to \"Already mine\": it has become yours.",
+    "delete": "Delete this habit",
+    "deleteText": "Deleting removes this habit for good. If you just need a break, pausing keeps everything.",
+    "pauseInstead": "Pause it instead",
+    "deleteConfirm": "Delete for good",
+    "colorFromGoal": "The colour comes from the goal."
+  },
+  "goalEditor": {
+    "newTitle": "New goal",
+    "editTitle": "Edit goal",
+    "missing": "We can't find this goal. It may have been deleted.",
+    "name": "Goal",
+    "namePlaceholder": "e.g. Get stronger",
+    "why": "Your why (optional)",
+    "whyPlaceholder": "What would change for you?",
+    "delete": "Delete this goal",
+    "deleteText": "The goal is deleted, its habits stay (you'll find them under \"Other habits\").",
+    "deleteConfirm": "Delete the goal"
+  },
+  "appearance": {
+    "title": "Look",
+    "color": "Colour",
+    "icon": "Icon"
+  },
+  "colors": {
+    "night": "Night blue",
+    "slate": "Slate",
+    "ocean": "Ocean",
+    "sage": "Sage",
+    "plum": "Plum",
+    "rose": "Rose",
+    "earth": "Earth",
+    "iris": "Iris"
+  },
+  "goalSuggestions": {
+    "stronger": "Get stronger",
+    "sleep": "Sleep better",
+    "read": "Read more",
+    "calm": "Calmer mind",
+    "eat": "Eat better",
+    "learn": "Learn something new",
+    "own": "Write your own"
+  },
+  "onboarding": {
+    "progress": "Step {step} of {total}",
+    "routinesTitle": "Anything you already do?",
+    "routinesText": "Do you already have routines you want to keep an eye on? Add them with their goal and how often. They never count as \"new\".",
+    "yes": "Yes, a few",
+    "notNow": "Not really",
+    "continue": "Continue",
+    "skip": "Skip",
+    "goalTitle": "What would you like to work on?",
+    "goalText": "Add your first new habits. For each one, pick a goal: one of yours, an idea, or a new one.",
+    "habitsLater": "You can add your why, a minimal version and an icon later, in each habit.",
+    "done": "Let's start",
+    "later": "I'll do it later",
+    "addedSoFar": "Added so far"
+  },
+  "goalPicker": {
+    "label": "Goal",
+    "yours": "Your goals",
+    "ideas": "Ideas",
+    "new": "+ New goal…",
+    "none": "No goal (Other habits)",
+    "newName": "Name of the new goal"
+  },
+  "quickAdd": {
+    "routineName": "Routine",
+    "habitName": "New habit",
+    "routinePlaceholder": "e.g. Morning walk",
+    "habitPlaceholder": "e.g. 10 push-ups",
+    "addRoutine": "Add this routine",
+    "addHabit": "Add this habit"
   }
 }

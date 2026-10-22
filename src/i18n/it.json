@@ -3,7 +3,9 @@
     "back": "Indietro",
     "loading": "Caricamento…",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "save": "Salva",
+    "cancel": "Annulla"
   },
   "setup": {
     "notConfigured": "Supabase non è ancora collegato: puoi dare un'occhiata ma non accedere. Vedi README.md, passo \"Connect the app\".",
@@ -89,7 +91,15 @@
   },
   "habits": {
     "title": "Abitudini",
-    "placeholder": "Qui cresceranno i tuoi obiettivi e le tue abitudini. In arrivo nel prossimo passo."
+    "empty": "Qui cresceranno i tuoi obiettivi e le tue abitudini. Inizia da un obiettivo: qualcosa a cui tieni.",
+    "recommendation": "Inizia con al massimo {count} abitudini nuove. Poche alla volta restano davvero.",
+    "newGoal": "Nuovo obiettivo",
+    "editGoal": "Modifica",
+    "addHabit": "Aggiungi un'abitudine",
+    "paused": "In pausa ({count})",
+    "pausedHint": "Le abitudini in pausa riposano qui, con tutto il loro storico e il materiale. Ti aspettano.",
+    "resume": "Riprendi",
+    "other": "Altre abitudini"
   },
   "dreams": {
     "title": "Sogni",
@@ -131,5 +141,148 @@
     "generic": "Qualcosa non ha funzionato da parte nostra. Riprova tra un momento.",
     "exportFailed": "Non siamo riusciti a preparare il file. Riprova tra un momento.",
     "deleteFailed": "Non siamo riusciti a eliminare il tuo account. Non si è perso nulla: riprova tra un momento."
+  },
+  "habitRow": {
+    "minutes": "{count} min",
+    "mine": "mia",
+    "bonus": "bonus"
+  },
+  "heavy": {
+    "days": "Alcuni giorni sembrano pieni: {groups}.",
+    "week": "Le tue abitudini flessibili arrivano a circa {hours} ore a settimana.",
+    "suggestion": "Quali contano di più? Segnale come essenziali, le altre possono essere bonus e aspettare senza sensi di colpa.",
+    "close": "Ok, capito",
+    "everyDay": "Ogni giorno sembra pieno ({minutes} min).",
+    "everyDayGroups": "Ogni giorno sembra pieno: {groups}.",
+    "range": "da {from} a {to}"
+  },
+  "essentials": {
+    "title": "Quante cose nuove",
+    "text": "Sono tante cose nuove tutte insieme. Quali contano di più ogni giorno? Segnale come essenziali, le altre possono aspettare senza sensi di colpa.",
+    "done": "Fatto"
+  },
+  "priority": {
+    "essential": "Essenziale",
+    "bonus": "Bonus",
+    "essentialHint": "Ogni giorno in cui è prevista, mostrata per prima.",
+    "bonusHint": "Va bene saltarla all'inizio. Ti aspetta."
+  },
+  "kind": {
+    "in_progress": "Nuova abitudine",
+    "already_mine": "Già mia",
+    "in_progressHint": "Qualcosa che stai costruendo ora.",
+    "already_mineHint": "Qualcosa che fai già e vuoi solo tenere d’occhio."
+  },
+  "frequency": {
+    "everyDay": "Ogni giorno",
+    "workdays": "Dal lunedì al venerdì",
+    "oncePerWeek": "Una volta a settimana",
+    "timesPerWeek": "{count} volte a settimana",
+    "rangePerWeek": "{min}–{max} volte a settimana",
+    "daysOption": "Giorni precisi",
+    "weeklyOption": "Volte a settimana",
+    "weeklyHint": "Nei giorni che preferisci, es. \"allenarsi 3-5 volte a settimana\".",
+    "from": "Da",
+    "to": "a",
+    "timesAWeek": "volte a settimana",
+    "rangeHint": "Scegli lo stesso numero due volte per un obiettivo preciso, o un intervallo per restare flessibile.",
+    "daysHint": "Nei giorni della settimana che scegli."
+  },
+  "habitEditor": {
+    "newTitle": "Nuova abitudine",
+    "editTitle": "Modifica abitudine",
+    "missing": "Non troviamo questa abitudine. Forse è stata eliminata.",
+    "pausedNotice": "Questa abitudine è in pausa: riposa, con tutto il suo storico.",
+    "name": "Nome",
+    "namePlaceholder": "es. Andare a correre",
+    "goal": "Obiettivo",
+    "kind": "Tipo",
+    "priority": "Priorità",
+    "howOften": "Quanto spesso",
+    "whichDays": "Quali giorni",
+    "minutes": "Minuti (facoltativo)",
+    "minutesHint": "Più o meno quanto ci vuole. Aiuta Rocco ad accorgersi quando una giornata diventa troppo piena.",
+    "why": "Il tuo perché (facoltativo)",
+    "whyPlaceholder": "Perché è importante per te?",
+    "minimal": "Versione minima (facoltativo)",
+    "minimalPlaceholder": "es. 2 pagine invece di 15",
+    "minimalHint": "La versione piccola per i giorni no. Conta lo stesso.",
+    "resume": "Riprendi questa abitudine",
+    "pause": "Metti in pausa questa abitudine",
+    "pauseHint": "Sparisce da Oggi ma conserva tutto il suo storico. Riprendila quando vuoi.",
+    "graduate": "Ormai fa parte di me",
+    "graduateHint": "La sposta in \"Già mie\": ormai è tua.",
+    "delete": "Elimina questa abitudine",
+    "deleteText": "Eliminarla la cancella per sempre. Se ti serve solo una pausa, metterla in pausa conserva tutto.",
+    "pauseInstead": "Mettila in pausa",
+    "deleteConfirm": "Elimina per sempre",
+    "colorFromGoal": "Il colore arriva dall'obiettivo."
+  },
+  "goalEditor": {
+    "newTitle": "Nuovo obiettivo",
+    "editTitle": "Modifica obiettivo",
+    "missing": "Non troviamo questo obiettivo. Forse è stato eliminato.",
+    "name": "Obiettivo",
+    "namePlaceholder": "es. Diventare più forte",
+    "why": "Il tuo perché (facoltativo)",
+    "whyPlaceholder": "Cosa cambierebbe per te?",
+    "delete": "Elimina questo obiettivo",
+    "deleteText": "L'obiettivo viene eliminato, le sue abitudini restano (le trovi in \"Altre abitudini\").",
+    "deleteConfirm": "Elimina l'obiettivo"
+  },
+  "appearance": {
+    "title": "Aspetto",
+    "color": "Colore",
+    "icon": "Icona"
+  },
+  "colors": {
+    "night": "Blu notte",
+    "slate": "Ardesia",
+    "ocean": "Oceano",
+    "sage": "Salvia",
+    "plum": "Prugna",
+    "rose": "Rosa antico",
+    "earth": "Terra",
+    "iris": "Iris"
+  },
+  "goalSuggestions": {
+    "stronger": "Diventare più forte",
+    "sleep": "Dormire meglio",
+    "read": "Leggere di più",
+    "calm": "Mente più calma",
+    "eat": "Mangiare meglio",
+    "learn": "Imparare qualcosa di nuovo",
+    "own": "Scrivi il tuo"
+  },
+  "onboarding": {
+    "progress": "Passo {step} di {total}",
+    "routinesTitle": "Qualcosa che fai già?",
+    "routinesText": "Hai già delle routine che vuoi tenere d’occhio? Aggiungile con il loro obiettivo e quanto spesso. Non contano mai come \"nuove\".",
+    "yes": "Sì, qualcuna",
+    "notNow": "Non proprio",
+    "continue": "Continua",
+    "skip": "Salta",
+    "goalTitle": "Su cosa vorresti lavorare?",
+    "goalText": "Aggiungi le tue prime abitudini nuove. Per ognuna scegli un obiettivo: uno dei tuoi, un'idea o uno nuovo.",
+    "habitsLater": "Il perché, la versione minima e l'icona puoi aggiungerli dopo, in ogni abitudine.",
+    "done": "Iniziamo",
+    "later": "Lo faccio più tardi",
+    "addedSoFar": "Aggiunte finora"
+  },
+  "goalPicker": {
+    "label": "Obiettivo",
+    "yours": "I tuoi obiettivi",
+    "ideas": "Idee",
+    "new": "+ Nuovo obiettivo…",
+    "none": "Nessun obiettivo (Altre abitudini)",
+    "newName": "Nome del nuovo obiettivo"
+  },
+  "quickAdd": {
+    "routineName": "Routine",
+    "habitName": "Nuova abitudine",
+    "routinePlaceholder": "es. Passeggiata del mattino",
+    "habitPlaceholder": "es. 10 flessioni",
+    "addRoutine": "Aggiungi questa routine",
+    "addHabit": "Aggiungi questa abitudine"
   }
 }

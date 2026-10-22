@@ -53,10 +53,17 @@ goatstep-app/
 - **Passwords**: at least 8 characters, with a lowercase letter, an uppercase letter, a digit and a symbol. Supabase enforces it on the server; the app shows the same rules before typing and checks them in the form (`PASSWORD_RULES` in `src/lib/config.js`). The two must always match.
 
 - **Recommend, never block.** There are no limits on categories or habits and no database rule that refuses a habit. The only hard limits are technical: 10 MB per file, 25 MB of files per user.
-- **Warnings are computed in the app, never stored as rules**, and can always be dismissed:
-  - more than 3 `in_progress` habits created in the last 14 days (paused and archived ones excluded);
-  - the day's planned minutes of `in_progress` habits getting heavy (starting threshold: 60 minutes, one constant in the code).
-  - `already_mine` habits never count.
+- **Warnings are computed in the app, never stored as rules**, and can always be dismissed. Only active (not paused) `in_progress` habits with priority `essential` count: `already_mine` habits never count, and bonus habits are the ones that can wait. All numbers are constants in `src/lib/recommendations.js`:
+  - **Many new at once:** more than 3 (`RECOMMENDED_NEW_HABITS`) created in the last 14 days (`RECENT_DAYS`) → after saving, a panel to mark which are essential.
+  - **Heavy day:** fixed-day habits planned for more than 60 minutes (`DAILY_MINUTES_LIMIT`) on a weekday.
+  - **Heavy week:** flexible habits adding up to more than 300 minutes a week (`WEEKLY_FLEXIBLE_MINUTES_LIMIT`), counting each at its highest number of times.
+- **Flexible habits** ("3–5 times a week") show on Today every day until the weekly target is reached; a skipped day never counts against the user.
+- **"Already mine" is a label, not a group.** It belongs to a goal like any other habit and is never shown as lesser. Habits without a goal are listed last, under **Other habits**.
+- **Today** (and any list of the day's habits) shows all habits together; essential ones get a subtle accent.
+- **Colours belong to goals.** Habits show their goal's colour (`habitColor()` in `src/lib/appearance.js`); habits without a goal use a neutral grey-blue. Goal cards: coloured left edge and a faint tint, never loud.
+- **One "How often" component everywhere** a habit is created or edited (`components/FrequencyFields.svelte`), and one goal picker (`components/GoalPicker.svelte`: your goals, suggested ideas, a new goal typed on the spot, or none).
+- **Two-option switches** (`components/TwoOptionSwitch.svelte`): tapping the option that's already selected flips to the other one.
+- **Gentle warnings show a small Rocco** (`components/GentleNote.svelte`, and the essentials panel).
 - **Check-in tone:** went well → celebrate only, at most one quiet line about room for something new. Hard → normalise and offer to pause bonus habits.
 - **Forbidden words** anywhere in the app: failed, missed, behind, streak lost (and their Italian versions).
 
@@ -92,8 +99,10 @@ Created automatically by a database trigger when someone signs up. Sign-up is re
 | `name`, `icon`, `color` | text | colour chosen by the user (not mint or butter yellow) |
 | `why` | text | the user's reason |
 | `position` | int | order on screen |
-| `archived_at` | timestamptz | archived, not deleted |
-| `created_at` | timestamptz | |
+| `archived_at` | timestamptz | archived, not deleted (not used by the screens yet) |
+| `created_at`, `updated_at` | timestamptz | |
+
+Migration: `0002_categories_habits.sql`. In the app the word is always **goal**; `categories` is only the table name.
 
 *Later:* a nullable `dream_id` column will link each category to a dream when the Dreams section arrives. Nothing needs to change now for that.
 
@@ -101,20 +110,22 @@ Created automatically by a database trigger when someone signs up. Sign-up is re
 | Column | Type | Notes |
 | --- | --- | --- |
 | `id`, `user_id` | uuid | |
-| `category_id` | uuid, nullable | if the category is removed, the habit stays (category becomes empty) |
+| `category_id` | uuid, nullable | must be a goal of the same user; if the goal is deleted, the habit stays without goal |
 | `kind` | text | `already_mine` / `in_progress` |
 | `priority` | text | `essential` (every day, shown first) / `bonus` (fine to skip at the beginning) |
-| `name`, `icon`, `color` | text | |
+| `name`, `icon` | text | no colour of its own: it shows its goal's colour (`color` was removed in `0003_habits_use_goal_color.sql`) |
 | `why` | text | |
 | `minimal_version` | text | e.g. "2 pages instead of 15" |
-| `days` | smallint[] | 1 = Monday … 7 = Sunday |
-| `minutes` | int, nullable | planned time; if the habit has steps, their total is used |
+| `frequency_type` | text | `days` (fixed weekdays) / `weekly` (any days, a number of times a week) |
+| `days` | smallint[] | for `days`: 1 = Monday … 7 = Sunday |
+| `times_per_week_min`, `times_per_week_max` | smallint, nullable | for `weekly`: e.g. 3 and 5 for "3–5 times a week" (equal for an exact number) |
+| `minutes` | smallint, nullable | planned time; if the habit has steps, their total is used |
 | `reminder_time` | time, nullable | |
 | `position` | int | |
 | `graduated_at` | timestamptz | when it moved from "in progress" to "already mine" |
 | `paused_at` | timestamptz | paused: hidden from Today and calendar, history and materials kept |
-| `archived_at` | timestamptz | |
-| `created_at` | timestamptz | |
+| `archived_at` | timestamptz | not used by the screens yet |
+| `created_at`, `updated_at` | timestamptz | |
 
 ### habit_steps — timed sequence inside a habit (step 5, library)
 `id`, `user_id`, `habit_id`, `position`, `title`, `minutes`, `prompt` (e.g. the writing prompt).

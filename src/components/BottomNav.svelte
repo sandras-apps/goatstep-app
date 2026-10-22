@@ -9,11 +9,16 @@
     { path: '/dreams', label: 'nav.dreams', icon: 'M12 3l2.5 5.5L20 9.3l-4 4 1 5.7-5-2.8-5 2.8 1-5.7-4-4 5.5-.8L12 3Z', soon: true },
     { path: '/you', label: 'nav.you', icon: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 21a8 8 0 0 1 16 0' }
   ];
+
+  // The habit and goal editors belong to the Habits tab.
+  function isCurrent(path, current) {
+    return current === path || (path === '/habits' && /^\/(habit|goal)\//.test(current));
+  }
 </script>
 
 <nav aria-label={$t('nav.label')}>
   {#each items as item}
-    <a href="#{item.path}" aria-current={$route === item.path ? 'page' : undefined} class:soon={item.soon}>
+    <a href="#{item.path}" aria-current={isCurrent(item.path, $route) ? 'page' : undefined} class:soon={item.soon}>
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d={item.icon} />
       </svg>

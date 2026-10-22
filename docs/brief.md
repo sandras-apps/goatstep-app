@@ -78,7 +78,7 @@ Un'app gratuita, senza AI, che aiuta a costruire abitudini nuove (consiglia di i
 - Finestrella con 3 domande veloci, calde e brevi (es. "Come ti stai trovando?", "Riesci a seguirle?", "Come ti senti?").
 - **Se è andata bene** → si festeggia quello che l'utente ha fatto, niente di più. **Mai spingere ad aggiungere abitudini.** Al massimo una riga finale molto discreta, facile da ignorare, es. "Whenever you feel like it, there's room for something new." Niente pulsanti, pop-up o badge per aggiungere abitudini.
 - **Se non è andata bene** → niente colpa, niente rimprovero. Rocco normalizza e propone di alleggerire, es. "Life gets busy sometimes, that's ok. Want to put some bonus habits on pause for a while? They'll be waiting for you, nothing gets lost." Poi mostra le abitudini bonus con un semplice interruttore per metterle in pausa.
-- **Parole vietate in tutta l'app**: "failed", "missed", "behind", "streak lost" (e le traduzioni: "fallito", "mancato", "indietro", "serie persa").
+- **Parole vietate in tutta l'app**: "failed", "missed", "behind", "streak lost" (e le traduzioni: "fallito", "mancato", "in ritardo", "serie persa"). "Indietro" come pulsante di navigazione va bene.
 
 ### 3.4 Home — Oggi
 - Lista delle routine del giorno da spuntare.
