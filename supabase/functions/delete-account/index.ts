@@ -4,7 +4,8 @@
 //   2. their login account → every table row goes with it ("on delete cascade")
 //
 // It runs on Supabase's servers because deleting an account needs the secret
-// service_role key, which must never be in the app. Supabase provides it here automatically.
+// key, which must never be in the app. Supabase provides it here automatically.
+// It checks by itself who is calling, so it stays safe even if "Verify JWT" is turned off.
 
 import { createClient } from 'npm:@supabase/supabase-js@2';
 
@@ -15,6 +16,18 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
   'Access-Control-Allow-Methods': 'POST, OPTIONS'
 };
+
+// Projects with the legacy keys get SUPABASE_SERVICE_ROLE_KEY; projects with the
+// new API keys get SUPABASE_SECRET_KEYS ({"default": "sb_secret_…"}).
+function secretKey(): string | undefined {
+  const legacy = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+  if (legacy) return legacy;
+  try {
+    return JSON.parse(Deno.env.get('SUPABASE_SECRET_KEYS') ?? '{}').default;
+  } catch {
+    return undefined;
+  }
+}
 
 function reply(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -27,7 +40,12 @@ Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders });
   if (req.method !== 'POST') return reply({ error: 'Use POST' }, 405);
 
-  const admin = createClient(Deno.env.get('SUPABASE_URL')!, Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!);
+  const key = secretKey();
+  if (!key) {
+    console.error('No secret key found in the function environment');
+    return reply({ error: 'Server not configured' }, 500);
+  }
+  const admin = createClient(Deno.env.get('SUPABASE_URL')!, key);
 
   // Who is asking? Only the logged-in user can delete their own account.
   const token = (req.headers.get('Authorization') ?? '').replace('Bearer ', '');

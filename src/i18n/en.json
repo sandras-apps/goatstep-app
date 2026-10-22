@@ -22,7 +22,6 @@
   "signup": {
     "title": "Let's start",
     "subtitle": "Small steps, one at a time. Rocco will walk with you.",
-    "passwordHint": "At least 8 characters, with letters and numbers.",
     "acceptBefore": "I have read and accept the",
     "privacyLink": "Privacy Policy",
     "and": "and the",
@@ -35,6 +34,16 @@
     "checkSpam": "Nothing there? Have a look in the spam folder too.",
     "resend": "Send it again",
     "resent": "Sent again!"
+  },
+  "password": {
+    "intro": "Your password needs:",
+    "length": "at least 8 characters",
+    "lowercase": "a lowercase letter (a–z)",
+    "uppercase": "an uppercase letter (A–Z)",
+    "digit": "a number (0–9)",
+    "symbol": "a symbol, like ! ? # @ $ *",
+    "met": "(done)",
+    "notMet": "(not yet)"
   },
   "links": {
     "confirmed": "Email confirmed! Welcome aboard. You can log in now.",
@@ -109,7 +118,9 @@
     "invalidCredentials": "Email or password don't match. Try again, gently.",
     "emailNotConfirmed": "Your email isn't confirmed yet. Check your inbox for our link.",
     "tooManyAttempts": "Too many attempts in a short time. Take a breath and try again in a few minutes.",
-    "weakPassword": "That password is a bit too easy to guess. Use at least 8 characters, with letters and numbers.",
+    "weakPassword": "Almost there! Your password still needs a few things: check the list, each rule gets a tick when it's done.",
+    "passwordRejected": "The server didn't accept this password. Please try a different one that follows all the rules in the list.",
+    "passwordLeaked": "This password has appeared in a data leak on another website, so it isn't safe. Please choose a different one.",
     "samePassword": "That's the same as your old password. Choose a new one.",
     "linkExpired": "That link has expired. You can ask for a new one.",
     "generic": "Something went wrong on our side. Please try again in a moment.",

@@ -22,7 +22,6 @@
   "signup": {
     "title": "Iniziamo",
     "subtitle": "Piccoli passi, uno alla volta. Rocco cammina con te.",
-    "passwordHint": "Almeno 8 caratteri, con lettere e numeri.",
     "acceptBefore": "Ho letto e accetto la",
     "privacyLink": "Privacy Policy",
     "and": "e i",
@@ -35,6 +34,16 @@
     "checkSpam": "Non c'è niente? Dai un'occhiata anche nello spam.",
     "resend": "Inviala di nuovo",
     "resent": "Inviata di nuovo!"
+  },
+  "password": {
+    "intro": "La password deve avere:",
+    "length": "almeno 8 caratteri",
+    "lowercase": "una lettera minuscola (a–z)",
+    "uppercase": "una lettera maiuscola (A–Z)",
+    "digit": "un numero (0–9)",
+    "symbol": "un simbolo, come ! ? # @ $ *",
+    "met": "(fatto)",
+    "notMet": "(non ancora)"
   },
   "links": {
     "confirmed": "Email confermata! Ora puoi accedere.",
@@ -109,7 +118,9 @@
     "invalidCredentials": "Email o password non corrispondono. Riprova con calma.",
     "emailNotConfirmed": "La tua email non è ancora confermata. Cerca il nostro link nella posta.",
     "tooManyAttempts": "Troppi tentativi in poco tempo. Fai un bel respiro e riprova tra qualche minuto.",
-    "weakPassword": "Questa password è un po' troppo facile da indovinare. Usa almeno 8 caratteri, con lettere e numeri.",
+    "weakPassword": "Ci sei quasi! Alla password manca ancora qualcosa: guarda l'elenco, ogni regola riceve una spunta quando è a posto.",
+    "passwordRejected": "Il server non ha accettato questa password. Prova con un'altra che rispetti tutte le regole dell'elenco.",
+    "passwordLeaked": "Questa password è comparsa in una fuga di dati su un altro sito, quindi non è sicura. Scegline un'altra.",
     "samePassword": "È uguale alla password di prima. Scegline una nuova.",
     "linkExpired": "Il link è scaduto. Puoi chiederne uno nuovo.",
     "generic": "Qualcosa non ha funzionato da parte nostra. Riprova tra un momento.",

@@ -11,8 +11,20 @@ export function appUrl() {
   return window.location.origin + window.location.pathname;
 }
 
-// At least 8 characters, with at least one letter and one number.
-// Supabase checks the same rule on the server (see README.md).
+// The symbols Supabase counts as "symbols" (letters like à or € don't count).
+const PASSWORD_SYMBOLS = "!@#$%^&*()_+-=[]{};'\\:\"|<>?,./`~";
+
+// Same rules as Supabase → Authentication → Password settings
+// ("Lowercase, uppercase letters, digits and symbols", minimum 8).
+// Each key has a text in en.json / it.json under "password".
+export const PASSWORD_RULES = [
+  { key: 'length', test: (password) => password.length >= PASSWORD_MIN_LENGTH },
+  { key: 'lowercase', test: (password) => /[a-z]/.test(password) },
+  { key: 'uppercase', test: (password) => /[A-Z]/.test(password) },
+  { key: 'digit', test: (password) => /[0-9]/.test(password) },
+  { key: 'symbol', test: (password) => [...password].some((char) => PASSWORD_SYMBOLS.includes(char)) }
+];
+
 export function isPasswordStrong(password) {
-  return password.length >= PASSWORD_MIN_LENGTH && /[a-zA-Z]/.test(password) && /\d/.test(password);
+  return PASSWORD_RULES.every((rule) => rule.test(password));
 }

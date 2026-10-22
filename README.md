@@ -77,35 +77,46 @@ Each new build step adds a new numbered file in `supabase/migrations/`. Run each
 - Email provider: **on**
 - **Confirm email: on**
 - **Minimum password length: 8**
-- **Password requirements: letters and digits**
+- **Password requirements: Lowercase, uppercase letters, digits and symbols**
+
+The app shows and checks the same rules before sending the form (`PASSWORD_RULES` in [src/lib/config.js](src/lib/config.js)). If you change these settings in Supabase, change that list and the `password` texts in `src/i18n/` too.
 
 **Authentication → Rate Limits**: leave the defaults. They already slow down repeated login attempts.
 
 ### 5. Email templates
 
-**Authentication → Emails → Templates**. For each of the two templates below, set the subject and paste the body from the file (the comment at the top of each file says which is which):
+**Authentication → Emails → Templates**. For each template: open it, set the **Subject**, replace the whole **Message body** with the whole file, click **Save changes**.
 
-| Template | File |
-| --- | --- |
-| Confirm signup | [supabase/email-templates/confirm-signup.html](supabase/email-templates/confirm-signup.html) |
-| Reset password | [supabase/email-templates/reset-password.html](supabase/email-templates/reset-password.html) |
+| Template | Subject | Message body |
+| --- | --- | --- |
+| Confirm signup | `Confirm your Goatstep email · Conferma la tua email Goatstep` | [supabase/email-templates/confirm-signup.html](supabase/email-templates/confirm-signup.html) |
+| Reset Password | `Reset your Goatstep password · Reimposta la password di Goatstep` | [supabase/email-templates/reset-password.html](supabase/email-templates/reset-password.html) |
 
 These templates send people back to the app in their language, and the links also work when opened on a different device than the one used to sign up.
 
 ### 6. The "delete account" function
 
 1. Open **Edge Functions → Deploy a new function → Via Editor**.
-2. Name it exactly `delete-account`.
-3. Replace the example code with all of [supabase/functions/delete-account/index.ts](supabase/functions/delete-account/index.ts).
-4. Click **Deploy**. Leave **Verify JWT** turned on: it means only logged-in users can call it.
+2. Replace all the example code with all of [supabase/functions/delete-account/index.ts](supabase/functions/delete-account/index.ts).
+3. Name it exactly `delete-account`.
+4. Click **Deploy function**.
 
-### 7. Try it
+The function checks by itself who is calling, so it is safe whether **Verify JWT** is on or off. Leave it on; if deleting fails with *"Invalid JWT"*, turn it off in the function's **Details** page.
 
-1. `npm run dev`, open http://localhost:5173, create an account **with the same email you used for Supabase**. Until we set up our own email sender, Supabase's built-in one only delivers to the project team's addresses, a few emails per hour.
-2. Click the link in the email → you're back in the app with "Email confirmed".
-3. Log in → Rocco's welcome screen → *Let's go*.
-4. Tab **You**: change the language, export your data, log out, try "Forgot your password?", and finally delete the account.
-5. In Supabase, **Table Editor → profiles** shows one row per user; **Authentication → Users** shows the accounts.
+### 7. Test checklist
+
+Run `npm run dev` and open http://localhost:5173. Use **the email of your Supabase account**: until we set up our own email sender, Supabase's built-in one only delivers to the project team, a few emails per hour.
+
+- [ ] **Sign up**: the password rules are visible before typing and get a tick one by one; *Create my account* stays disabled until the Privacy/Terms box is ticked; then "Check your inbox".
+- [ ] **Confirm email**: the email arrives in your language; the link brings you back to the app with "Email confirmed!".
+- [ ] **Log in**: Rocco's welcome screen → *Let's go* → Today, with the bottom menu.
+- [ ] **Supabase check**: **Table Editor → profiles** has one row with `terms_accepted_at` filled in.
+- [ ] **Language**: tab *You* → switch to Italiano → the app changes language; reload: it stays.
+- [ ] **Export**: *Export my data* downloads a `goatstep-export-….json` file with your profile.
+- [ ] **Log out**: back to the login screen.
+- [ ] **Forgot password**: *Forgot your password?* → email arrives → link opens *Choose a new password* → save → you're in. Log out and log in with the new password.
+- [ ] **Wrong password**: a kind message, not an error code.
+- [ ] **Delete account**: tab *You* → *Delete my account…* → tick the box → *Delete everything* → back to sign up. In Supabase, the user is gone from **Authentication → Users** and the row is gone from **profiles**.
 
 ### Troubleshooting
 

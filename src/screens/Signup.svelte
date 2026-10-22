@@ -1,5 +1,6 @@
 <script>
   import AuthLayout from '../components/AuthLayout.svelte';
+  import PasswordRules from '../components/PasswordRules.svelte';
   import { signUp, resendConfirmation } from '../lib/auth.js';
   import { isConfigured } from '../lib/supabase.js';
   import { isPasswordStrong } from '../lib/config.js';
@@ -65,10 +66,10 @@
           type="password"
           autocomplete="new-password"
           required
-          aria-describedby="password-hint"
+          aria-describedby="password-rules"
           bind:value={password}
         />
-        <p class="hint" id="password-hint">{$t('signup.passwordHint')}</p>
+        <PasswordRules id="password-rules" {password} />
       </div>
       <div class="field">
         <label class="checkbox">

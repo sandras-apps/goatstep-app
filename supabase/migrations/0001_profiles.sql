@@ -1,6 +1,12 @@
 -- 0001_profiles.sql — Step 1: account
 -- One profile row per user, created automatically when someone signs up.
 -- Run once in Supabase → SQL Editor → New query → paste → Run.
+--
+-- The project has "Automatically expose new tables" OFF, so nothing is accessible
+-- unless granted here. Rule for every migration: grant only what the app needs,
+-- to `authenticated` only, never to `anon`.
+
+grant usage on schema public to authenticated;
 
 -- 1. The table ---------------------------------------------------------------
 
@@ -19,6 +25,7 @@ create table public.profiles (
 comment on table public.profiles is 'One row per user. Created by handle_new_user() at sign-up.';
 
 -- 2. Row Level Security: each user sees and edits only their own row ----------
+-- (Automatic RLS is on in the project too; enabling it here keeps the file self-contained.)
 
 alter table public.profiles enable row level security;
 
@@ -60,6 +67,9 @@ create trigger profiles_set_updated_at
   before update on public.profiles
   for each row execute function public.set_updated_at();
 
+-- Only triggers use this function: nobody can call it from the app.
+revoke execute on function public.set_updated_at() from public, anon, authenticated;
+
 -- 5. Create the profile at sign-up -------------------------------------------
 -- The app sends terms_accepted, terms_version, language and timezone with the sign-up.
 -- If the terms were not accepted, the sign-up is refused.
@@ -98,3 +108,6 @@ $$;
 create trigger on_auth_user_created
   after insert on auth.users
   for each row execute function public.handle_new_user();
+
+-- It runs with extra rights (security definer), so make sure the app can never call it directly.
+revoke execute on function public.handle_new_user() from public, anon, authenticated;

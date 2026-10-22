@@ -1,6 +1,7 @@
 <!-- Shown after opening the "reset password" link from the email. -->
 <script>
   import AuthLayout from '../components/AuthLayout.svelte';
+  import PasswordRules from '../components/PasswordRules.svelte';
   import { setNewPassword } from '../lib/auth.js';
   import { isPasswordStrong } from '../lib/config.js';
   import { authErrorKey } from '../lib/errors.js';
@@ -40,10 +41,10 @@
         type="password"
         autocomplete="new-password"
         required
-        aria-describedby="password-hint"
+        aria-describedby="password-rules"
         bind:value={password}
       />
-      <p class="hint" id="password-hint">{$t('signup.passwordHint')}</p>
+      <PasswordRules id="password-rules" {password} />
     </div>
     <div class="field">
       <label for="repeated">{$t('reset.confirmPassword')}</label>

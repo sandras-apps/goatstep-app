@@ -50,6 +50,8 @@ goatstep-app/
 
 ## 3. Product rules that shape the code
 
+- **Passwords**: at least 8 characters, with a lowercase letter, an uppercase letter, a digit and a symbol. Supabase enforces it on the server; the app shows the same rules before typing and checks them in the form (`PASSWORD_RULES` in `src/lib/config.js`). The two must always match.
+
 - **Recommend, never block.** There are no limits on categories or habits and no database rule that refuses a habit. The only hard limits are technical: 10 MB per file, 25 MB of files per user.
 - **Warnings are computed in the app, never stored as rules**, and can always be dismissed:
   - more than 3 `in_progress` habits created in the last 14 days (paused and archived ones excluded);
@@ -63,6 +65,12 @@ goatstep-app/
 Every table has Row Level Security on, with the rule "you can only see and change rows where `user_id` is you". Every table is linked to the user's account with `on delete cascade`, so deleting the account deletes all their rows automatically.
 
 Each migration file adds the tables for one build step, so you can see the database grow with the app.
+
+**Privileges.** The Supabase project has *Automatically expose new tables* **off** and *Enable automatic RLS* **on**, so a new table is invisible to the app until a migration grants access. Every migration therefore:
+- enables RLS explicitly and adds its own policies;
+- grants to `authenticated` only the exact privileges the app needs (e.g. `select`, `insert`, `update` on specific columns, `delete`);
+- grants **nothing to `anon`** (logged-out visitors never read or write data);
+- revokes `execute` from `public`, `anon` and `authenticated` on internal functions (triggers, `security definer` helpers).
 
 ### profiles — one row per user (step 1)
 | Column | Type | Notes |
