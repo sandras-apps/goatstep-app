@@ -1,0 +1,22 @@
+/* Goatstep design tokens: every colour has one fixed meaning (see docs/brief.md §5). */
+:root {
+  --color-bg: #FAF7F2;        /* warm white: background */
+  --color-ink: #2B3A67;       /* night blue: text, titles, dreams */
+  --color-coral: #F07C5E;     /* coral: main action buttons only */
+  --color-mint: #5BB8A6;      /* mint: checks and completed progress only */
+  --color-butter: #F6D88B;    /* butter yellow: wins, stars, milestones only */
+
+  --color-ink-soft: #55608A;  /* secondary text, still WCAG AA on the background */
+  --color-surface: #FFFFFF;
+  --color-line: rgba(43, 58, 103, 0.14);
+  --color-notice: #FDF1E3;
+
+  --font-title: 'Fraunces Variable', Georgia, serif;
+  --font-body: 'Manrope Variable', system-ui, sans-serif;
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --space: 16px;
+  --nav-height: 68px;
+  --content-width: 480px;
+}

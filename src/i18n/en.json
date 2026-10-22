@@ -1,0 +1,119 @@
+{
+  "common": {
+    "back": "Back",
+    "loading": "Loading…",
+    "email": "Email",
+    "password": "Password"
+  },
+  "setup": {
+    "notConfigured": "Supabase isn't connected yet, so you can look around but not log in. See README.md, step \"Connect the app\".",
+    "profileMissing": "We couldn't find your profile. If you're setting things up, check that the SQL migration was run in Supabase."
+  },
+  "login": {
+    "title": "Welcome back",
+    "subtitle": "One more step today. Rocco saved your spot.",
+    "submit": "Log in",
+    "forgot": "Forgot your password?",
+    "noAccount": "New here?",
+    "signupLink": "Create an account",
+    "resend": "Send the confirmation email again",
+    "resent": "Sent! Check your inbox (and the spam folder, just in case)."
+  },
+  "signup": {
+    "title": "Let's start",
+    "subtitle": "Small steps, one at a time. Rocco will walk with you.",
+    "passwordHint": "At least 8 characters, with letters and numbers.",
+    "acceptBefore": "I have read and accept the",
+    "privacyLink": "Privacy Policy",
+    "and": "and the",
+    "termsLink": "Terms of Service",
+    "submit": "Create my account",
+    "haveAccount": "Already have an account?",
+    "loginLink": "Log in",
+    "checkTitle": "Check your inbox",
+    "checkText": "We've sent a link to {email}. Tap it to confirm your email and you're in.",
+    "checkSpam": "Nothing there? Have a look in the spam folder too.",
+    "resend": "Send it again",
+    "resent": "Sent again!"
+  },
+  "links": {
+    "confirmed": "Email confirmed! Welcome aboard. You can log in now.",
+    "expired": "That link has expired or was already used. No problem: you can ask for a new one."
+  },
+  "forgot": {
+    "title": "New password",
+    "text": "It happens to everyone. Enter your email and we'll send you a link to choose a new password.",
+    "submit": "Send me the link",
+    "sent": "If there's an account with that email, the link is on its way. Check your inbox.",
+    "backToLogin": "Back to log in"
+  },
+  "reset": {
+    "title": "Choose a new password",
+    "newPassword": "New password",
+    "confirmPassword": "Repeat the new password",
+    "mismatch": "The two passwords are different. Try once more.",
+    "submit": "Save my new password"
+  },
+  "welcome": {
+    "title": "Hi, I'm Rocco",
+    "text": "I'm a stubborn mountain goat. Sometimes I trip, I patch myself up, and I keep climbing.",
+    "text2": "Here we build habits a few steps at a time. No pressure, no guilt. Just the next step.",
+    "start": "Let's go"
+  },
+  "nav": {
+    "label": "Main menu",
+    "today": "Today",
+    "habits": "Habits",
+    "dreams": "Dreams",
+    "you": "You",
+    "soon": "soon"
+  },
+  "today": {
+    "morning": "Good morning",
+    "afternoon": "Good afternoon",
+    "evening": "Good evening",
+    "placeholder": "Your habits for today will live here very soon."
+  },
+  "habits": {
+    "title": "Habits",
+    "placeholder": "This is where your goals and habits will grow. Coming in the next step."
+  },
+  "dreams": {
+    "title": "Dreams",
+    "text": "Rocco is still dreaming this section up. Coming soon."
+  },
+  "you": {
+    "title": "You",
+    "account": "Account",
+    "language": "Language",
+    "data": "Your data",
+    "exportText": "Download a copy of everything you've saved in Goatstep.",
+    "export": "Export my data",
+    "exporting": "Preparing your file…",
+    "legal": "Privacy and terms",
+    "logout": "Log out",
+    "deleteTitle": "Delete my account",
+    "deleteText": "This deletes your account, your habits, your history and all your files. It can't be undone.",
+    "deleteStart": "Delete my account…",
+    "deleteCheckbox": "I understand that everything will be deleted for good.",
+    "deleteConfirm": "Delete everything",
+    "deleting": "Deleting…",
+    "deleteCancel": "Keep my account"
+  },
+  "legal": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "draft": "This page is being written and will be ready before Goatstep is publicly available."
+  },
+  "errors": {
+    "invalidCredentials": "Email or password don't match. Try again, gently.",
+    "emailNotConfirmed": "Your email isn't confirmed yet. Check your inbox for our link.",
+    "tooManyAttempts": "Too many attempts in a short time. Take a breath and try again in a few minutes.",
+    "weakPassword": "That password is a bit too easy to guess. Use at least 8 characters, with letters and numbers.",
+    "samePassword": "That's the same as your old password. Choose a new one.",
+    "linkExpired": "That link has expired. You can ask for a new one.",
+    "generic": "Something went wrong on our side. Please try again in a moment.",
+    "exportFailed": "We couldn't prepare your file. Please try again in a moment.",
+    "deleteFailed": "We couldn't delete your account. Nothing was lost: please try again in a moment."
+  }
+}

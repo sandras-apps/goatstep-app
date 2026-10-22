@@ -1,0 +1,16 @@
+<!--
+  Supabase → Authentication → Emails → Templates → "Confirm signup"
+  Subject: Confirm your Goatstep email · Conferma la tua email Goatstep
+  Paste everything below this comment into the "Message body" field.
+-->
+{{ if eq .Data.language "it" }}
+<h2>Ciao! Rocco ti aspetta 🐐</h2>
+<p>Manca solo un passo: conferma la tua email per iniziare con Goatstep.</p>
+<p><a href="{{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=email">Conferma la mia email</a></p>
+<p>Se non ti sei registrata o registrato tu, puoi ignorare questa email.</p>
+{{ else }}
+<h2>Hi! Rocco is waiting for you 🐐</h2>
+<p>Just one step left: confirm your email to start with Goatstep.</p>
+<p><a href="{{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=email">Confirm my email</a></p>
+<p>If you didn't sign up, you can safely ignore this email.</p>
+{{ end }}

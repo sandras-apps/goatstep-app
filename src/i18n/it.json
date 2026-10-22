@@ -1,0 +1,119 @@
+{
+  "common": {
+    "back": "Indietro",
+    "loading": "Caricamento…",
+    "email": "Email",
+    "password": "Password"
+  },
+  "setup": {
+    "notConfigured": "Supabase non è ancora collegato: puoi dare un'occhiata ma non accedere. Vedi README.md, passo \"Connect the app\".",
+    "profileMissing": "Non troviamo il tuo profilo. Se stai configurando l'app, controlla di aver eseguito la migrazione SQL su Supabase."
+  },
+  "login": {
+    "title": "Che bello rivederti",
+    "subtitle": "Un passo in più anche oggi. Rocco ti ha tenuto il posto.",
+    "submit": "Accedi",
+    "forgot": "Password dimenticata?",
+    "noAccount": "Prima volta qui?",
+    "signupLink": "Crea un account",
+    "resend": "Invia di nuovo l'email di conferma",
+    "resent": "Inviata! Controlla la posta (e anche lo spam, per sicurezza)."
+  },
+  "signup": {
+    "title": "Iniziamo",
+    "subtitle": "Piccoli passi, uno alla volta. Rocco cammina con te.",
+    "passwordHint": "Almeno 8 caratteri, con lettere e numeri.",
+    "acceptBefore": "Ho letto e accetto la",
+    "privacyLink": "Privacy Policy",
+    "and": "e i",
+    "termsLink": "Termini di servizio",
+    "submit": "Crea il mio account",
+    "haveAccount": "Hai già un account?",
+    "loginLink": "Accedi",
+    "checkTitle": "Controlla la posta",
+    "checkText": "Abbiamo inviato un link a {email}. Toccalo per confermare l'email e ci sei.",
+    "checkSpam": "Non c'è niente? Dai un'occhiata anche nello spam.",
+    "resend": "Inviala di nuovo",
+    "resent": "Inviata di nuovo!"
+  },
+  "links": {
+    "confirmed": "Email confermata! Ora puoi accedere.",
+    "expired": "Il link è scaduto o è già stato usato. Nessun problema: puoi chiederne uno nuovo."
+  },
+  "forgot": {
+    "title": "Nuova password",
+    "text": "Succede a tutti. Scrivi la tua email e ti mandiamo un link per sceglierne una nuova.",
+    "submit": "Mandami il link",
+    "sent": "Se esiste un account con questa email, il link è in arrivo. Controlla la posta.",
+    "backToLogin": "Torna all'accesso"
+  },
+  "reset": {
+    "title": "Scegli una nuova password",
+    "newPassword": "Nuova password",
+    "confirmPassword": "Ripeti la nuova password",
+    "mismatch": "Le due password sono diverse. Riprova.",
+    "submit": "Salva la nuova password"
+  },
+  "welcome": {
+    "title": "Ciao, sono Rocco",
+    "text": "Sono una capra di montagna testarda. A volte inciampo, mi metto un cerotto e continuo a salire.",
+    "text2": "Qui costruiamo abitudini pochi passi alla volta. Niente pressione, niente sensi di colpa. Solo il prossimo passo.",
+    "start": "Andiamo"
+  },
+  "nav": {
+    "label": "Menu principale",
+    "today": "Oggi",
+    "habits": "Abitudini",
+    "dreams": "Sogni",
+    "you": "Tu",
+    "soon": "presto"
+  },
+  "today": {
+    "morning": "Buongiorno",
+    "afternoon": "Buon pomeriggio",
+    "evening": "Buonasera",
+    "placeholder": "Le abitudini di oggi arriveranno qui molto presto."
+  },
+  "habits": {
+    "title": "Abitudini",
+    "placeholder": "Qui cresceranno i tuoi obiettivi e le tue abitudini. In arrivo nel prossimo passo."
+  },
+  "dreams": {
+    "title": "Sogni",
+    "text": "Rocco sta ancora sognando questa sezione. In arrivo."
+  },
+  "you": {
+    "title": "Tu",
+    "account": "Account",
+    "language": "Lingua",
+    "data": "I tuoi dati",
+    "exportText": "Scarica una copia di tutto quello che hai salvato in Goatstep.",
+    "export": "Esporta i miei dati",
+    "exporting": "Sto preparando il file…",
+    "legal": "Privacy e termini",
+    "logout": "Esci",
+    "deleteTitle": "Elimina il mio account",
+    "deleteText": "Elimina il tuo account, le tue abitudini, il tuo storico e tutti i tuoi file. Non si può annullare.",
+    "deleteStart": "Elimina il mio account…",
+    "deleteCheckbox": "Ho capito che verrà eliminato tutto, per sempre.",
+    "deleteConfirm": "Elimina tutto",
+    "deleting": "Eliminazione in corso…",
+    "deleteCancel": "Tengo il mio account"
+  },
+  "legal": {
+    "privacy": "Privacy Policy",
+    "terms": "Termini di servizio",
+    "draft": "Questa pagina è in preparazione e sarà pronta prima che Goatstep sia disponibile al pubblico."
+  },
+  "errors": {
+    "invalidCredentials": "Email o password non corrispondono. Riprova con calma.",
+    "emailNotConfirmed": "La tua email non è ancora confermata. Cerca il nostro link nella posta.",
+    "tooManyAttempts": "Troppi tentativi in poco tempo. Fai un bel respiro e riprova tra qualche minuto.",
+    "weakPassword": "Questa password è un po' troppo facile da indovinare. Usa almeno 8 caratteri, con lettere e numeri.",
+    "samePassword": "È uguale alla password di prima. Scegline una nuova.",
+    "linkExpired": "Il link è scaduto. Puoi chiederne uno nuovo.",
+    "generic": "Qualcosa non ha funzionato da parte nostra. Riprova tra un momento.",
+    "exportFailed": "Non siamo riusciti a preparare il file. Riprova tra un momento.",
+    "deleteFailed": "Non siamo riusciti a eliminare il tuo account. Non si è perso nulla: riprova tra un momento."
+  }
+}
