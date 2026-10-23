@@ -168,7 +168,7 @@ Navigazione in basso: **Today · Habits · Dreams (coming soon) · You**
 I dati possono essere personali e sensibili (abitudini legate a salute, umore, file privati). Trattali come tali.
 
 - RLS su tutte le tabelle, bucket privati, signed URL a scadenza breve.
-- Nessun tracker pubblicitario, nessuna analytics di terze parti nella v1 → servono **solo cookie tecnici**, quindi un banner informativo semplice (niente consensi per marketing).
+- Nessun tracker pubblicitario. L'unica analytics è il conteggio anonimo delle visite di **GoatCounter** (solo visite, niente cookie, nessun ID utente, nessun collegamento con l'account) → servono **solo cookie tecnici**, quindi un banner informativo semplice (niente consensi per marketing). La Privacy Policy deve citarlo.
 - Pagine da preparare in bozza (EN + IT): **Privacy Policy**, **Terms of Service**, **Cookie Policy**. Indica chiaramente: titolare, dati raccolti, finalità, dove sono salvati (Supabase, UE), per quanto tempo, diritti GDPR (accesso, export, cancellazione), contatto.
 - ⚠️ Le bozze legali vanno riviste da un professionista o con un servizio dedicato (es. iubenda) prima del lancio pubblico. Segnalami ogni punto dubbio.
 - Protezione base: limite tentativi di login, password minima sicura, HTTPS ovunque.

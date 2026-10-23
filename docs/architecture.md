@@ -15,6 +15,7 @@ Approved on 2026-10-22.
 | Backend | **Supabase** (EU region) | Auth, Postgres database, file storage, small server functions. |
 | PWA | `vite-plugin-pwa` | Makes the app installable and work offline for the shell. |
 | Translations | Our own tiny helper + `en.json` / `it.json` | No library to learn; add `es.json` for Spanish later. |
+| Analytics | GoatCounter, anonymous pageview count only | No cookies, no user IDs, never linked to the account. |
 | Fonts | Fraunces + Manrope, **self-hosted** (`@fontsource`) | Loading them from Google's servers would send every visitor's IP to Google (a GDPR problem in the EU). |
 | Hosting | **GitHub Pages** (public repo) | Free. Page addresses look like `/#/today` so refreshes never give a 404. |
 
@@ -170,7 +171,7 @@ Private bucket `materials`. Path: `{user_id}/{habit_id}/{random-id}-{file name}`
 - [ ] **Privacy Policy** (EN + IT), final version, reviewed by a professional or a service like iubenda.
 - [ ] **Terms of Service** (EN + IT), final version, reviewed the same way.
 - [ ] **Cookie Policy** (EN + IT), final version, reviewed the same way.
-- [ ] **Cookie banner**: informative only, because the app uses only technical cookies/storage (login session, language). No marketing consent needed as long as there are no trackers or third-party analytics.
+- [ ] **Cookie banner**: informative only, because the app uses only technical cookies/storage (login session, language). No marketing consent needed as long as there are no trackers. The only analytics is GoatCounter's anonymous, cookieless visit count (script in `index.html`, site `goatstep-app.goatcounter.com`); the Privacy Policy must mention it (what it receives: page, referrer, browser and screen type, approximate country; link to goatcounter.com/help/privacy).
 - [ ] Bump `TERMS_VERSION` in `src/lib/config.js` when the final texts replace the drafts.
 - [ ] *(Later)* **Data export in a human-readable format** too (e.g. a simple HTML or PDF page), next to the current JSON file.
 
