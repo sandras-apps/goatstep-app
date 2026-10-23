@@ -21,7 +21,7 @@
       en: 'Tells you how much you can spend today; save a little and tomorrow you have more. Free, no account.'
     },
     {
-      id: 'easy-recipes', name: 'Easy Recipes', url: 'https://sandras-apps.github.io/easy-recipes/', live: false,
+      id: 'easy-recipes', name: 'Easy Recipes', url: 'https://sandras-apps.github.io/easy-recipes/', live: true,
       it: 'Ricette semplici con le dosi dentro ogni passaggio e i timer già pronti. Gratis, senza account.',
       en: 'Simple recipes with the amounts inside every step and timers ready to go. Free, no account.'
     },
