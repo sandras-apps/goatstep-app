@@ -123,6 +123,16 @@
     "deleting": "Eliminazione in corso…",
     "deleteCancel": "Tengo il mio account"
   },
+  "more": {
+    "shareTitle": "Ti sta piacendo?",
+    "shareText": "Condividila con chi potrebbe trovarla utile.",
+    "shareButton": "Condividi Goatstep",
+    "shareMessage": "Sto usando Goatstep per costruire le mie abitudini un passo alla volta, con Rocco, la capra testarda che inciampa e riparte. Gratis 👉",
+    "copied": "Link copiato: incollalo dove vuoi.",
+    "copyFailed": "Il link non si è copiato. Eccolo:",
+    "title": "Altre app di Sandra",
+    "text": "Ti piace Goatstep? Ho fatto anche queste."
+  },
   "legal": {
     "privacy": "Privacy Policy",
     "terms": "Termini di servizio",

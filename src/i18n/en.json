@@ -123,6 +123,16 @@
     "deleting": "Deleting…",
     "deleteCancel": "Keep my account"
   },
+  "more": {
+    "shareTitle": "Enjoying it?",
+    "shareText": "Share it with someone who might find it useful.",
+    "shareButton": "Share Goatstep",
+    "shareMessage": "I'm using Goatstep to build my habits one step at a time, with Rocco, the stubborn goat who trips and keeps climbing. Free 👉",
+    "copied": "Link copied: paste it wherever you like.",
+    "copyFailed": "The link didn't copy. Here it is:",
+    "title": "More apps by Sandra",
+    "text": "Like Goatstep? I've made these too."
+  },
   "legal": {
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",

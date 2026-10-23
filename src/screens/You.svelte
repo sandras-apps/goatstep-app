@@ -1,9 +1,10 @@
-<!-- Account: language, export my data, log out, delete my account. -->
+<!-- Account: language, export my data, share the app and Sandra's other apps, log out, delete my account. -->
 <script>
   import { session, profile, updateProfile, logOut } from '../lib/auth.js';
   import { exportMyData, deleteMyAccount } from '../lib/api/account.js';
   import { go } from '../lib/router.js';
   import { t, locale, languages } from '../i18n/index.js';
+  import MoreApps from '../components/MoreApps.svelte';
 
   let exporting = $state(false);
   let errorKey = $state(null);
@@ -79,6 +80,8 @@
       {exporting ? $t('you.exporting') : $t('you.export')}
     </button>
   </section>
+
+  <MoreApps />
 
   <section class="card">
     <h2>{$t('you.legal')}</h2>
